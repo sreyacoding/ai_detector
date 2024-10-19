@@ -1,8 +1,12 @@
 # ai_detector
 AI vs Human Text Detection Model 
 
+**Introduction**
+This project develops a model to classify both text and audio as either AI-generated or human-made. Thus, the increasing application of AI in content development necessitates the establishment of authenticity and trust among producers and consumers.
+We train models on both text and audio datasets, features that help to distinguish human input from AI output. The model is deployed via a Streamlit app where users can input text or upload audio files and immediately receive predictions, all with the value of ensuring content integrity in various domains.
+
 **Objective:**
-The goal of this project is to build a classification model that distinguishes between AI-generated text and human-written content. For example, the model can help detect whether a student or an LLM (Large Language Model), like ChatGPT, wrote an essay.
+The goal of this project is to build a classification model that distinguishes between AI-generated text and human-written content. For example, the model can help detect whether a student or an LLM (Large Language Model), like ChatGPT, wrote an essay.    
 
 **Dataset:** 
 We used the LLM-Detect AI Generated Text Dataset to train the model and ensure accurate classification.
