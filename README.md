@@ -6,7 +6,9 @@ This project develops a model to classify both text and audio as either AI-gener
 We train models on both text and audio datasets, features that help to distinguish human input from AI output. The model is deployed via a Streamlit app where users can input text or upload audio files and immediately receive predictions, all with the value of ensuring content integrity in various domains.
 
 
+
 Audio Detection
+
 **Objective:**
 To build a model that can distinguish between an AI-generated deepfake voice vs real human speech.
 
@@ -30,7 +32,9 @@ The following models were trained and evaluated for this task:
 The XGBoost model was chosen due to its superior overall performance in metrics scores. The project successfully demonstrated how ML models can detect synthetic audio, offering a valuable tool to counteract the potential misuse of AI in audio content creation.
 
 
+
 Text Detection
+
 **Objective:**
 The goal of this project is to build a classification model that distinguishes between AI-generated text and human-written content. For example, the model can help detect whether a student or an LLM (Large Language Model), like ChatGPT, wrote an essay.    
 
