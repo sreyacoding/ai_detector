@@ -42,7 +42,7 @@ The model is trained using a combination of datasets like the TIMIT-TTS dataset,
 **Model Training:**
 The following models were trained and evaluated for this task:
 - XGBoost:
-  - Achieved highest precision, recall, F1 score and accuracy among all models.
+  - Achieved highest precision, recall, F1 score, accuracy, ROC-AUC scorea and EER among all models.
   - Selected as the final model due to superior performance.
 - LightGBM
 - VGG16
