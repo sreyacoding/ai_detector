@@ -1,0 +1,8 @@
+librosa==0.10.2.post1
+nltk==3.8.1
+numpy==1.26.4
+Pillow==11.1.0
+streamlit==1.32.0
+torch==2.5.1
+torchvision==0.20.1
+xgboost==2.1.3
