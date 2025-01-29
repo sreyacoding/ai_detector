@@ -10,6 +10,8 @@ import re
 import string
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
+import warnings
+
 
 #######################################################################################################################################
 ##################################
