@@ -17,6 +17,11 @@ from nltk.corpus import stopwords
 ##################################
 #######################################################################################################################################
 
+# Suppress warnings and download NLTK data
+warnings.filterwarnings("ignore")
+nltk.download('stopwords')
+nltk.download('wordnet')
+
 # Load the SVM model and TF-IDF vectorizer for text classification
 @st.cache_resource
 def load_text_model_and_vectorizer(svm_model_path, tfidf_vectorizer_path):
@@ -177,7 +182,7 @@ def main():
     with tab3:
         st.subheader("Classify Text as AI-Generated or Human-Written")
         svm_model, tfidf_vectorizer = load_text_model_and_vectorizer("svm_model.pkl","tfidf_vectorizer.pkl")
-        user_input = st.text_area("Enter text:", "")
+        user_input = st.text_area("Enter text:(Minimum word count is 500)", "")
 
         if st.button('Classify Text'):
             if user_input:
