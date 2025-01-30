@@ -9,8 +9,6 @@ import io
 import re
 import string
 from nltk.stem import WordNetLemmatizer
-from nltk.corpus import stopwords
-import warnings
 
 
 #######################################################################################################################################
@@ -19,10 +17,6 @@ import warnings
 ##################################
 #######################################################################################################################################
 
-# Suppress warnings and download NLTK data
-warnings.filterwarnings("ignore")
-nltk.download('stopwords')
-nltk.download('wordnet')
 
 # Load the SVM model and TF-IDF vectorizer for text classification
 @st.cache_resource
@@ -40,7 +34,6 @@ def clean_text(text):
     text = re.sub(f"[{re.escape(string.punctuation)}]", "", text)  # Remove punctuation
     text = re.sub(r'\d+', '', text)  # Remove numbers
     text = re.sub(r'\s+', ' ', text).strip()  # Remove extra spaces
-    text = " ".join([lemmatizer.lemmatize(word) for word in text.split() if word not in stopwords.words('english')])
     return text
 
 # Prediction function for text
