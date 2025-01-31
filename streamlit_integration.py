@@ -10,7 +10,6 @@ import re
 import string
 from nltk.stem import WordNetLemmatizer
 
-
 #######################################################################################################################################
 ##################################
 ###############TEXT###############
@@ -18,36 +17,40 @@ from nltk.stem import WordNetLemmatizer
 #######################################################################################################################################
 
 
-# Load the SVM model and TF-IDF vectorizer for text classification
-@st.cache_resource
-def load_text_model_and_vectorizer(svm_model_path, tfidf_vectorizer_path):
-    with open(svm_model_path, 'rb') as model_file:
-        svm_model = pickle.load(model_file)
-    with open(tfidf_vectorizer_path, 'rb') as vectorizer_file:
-        tfidf_vectorizer = pickle.load(vectorizer_file)
-    return svm_model, tfidf_vectorizer
+# Load the trained SVM model and TF-IDF vectorizer
+
+with open('svm_final_model.pkl', 'rb') as model_file:
+    svm_model = pickle.load(model_file)
+
+with open('tfidf_final_vectorizer.pkl', 'rb') as vectorizer_file:
+    tfidf_vectorizer = pickle.load(vectorizer_file)
 
 # Text cleaning function
 def clean_text(text):
+    import re
+    import string
+    from nltk.stem import WordNetLemmatizer
+    from nltk.corpus import stopwords
+    
     lemmatizer = WordNetLemmatizer()
-    text = text.lower()
+    text = text.lower()  # Convert to lowercase
     text = re.sub(f"[{re.escape(string.punctuation)}]", "", text)  # Remove punctuation
     text = re.sub(r'\d+', '', text)  # Remove numbers
     text = re.sub(r'\s+', ' ', text).strip()  # Remove extra spaces
+    text = " ".join([lemmatizer.lemmatize(word) for word in text.split() if word not in stopwords.words('english')])
     return text
 
-# Prediction function for text
-def predict_text(text, model, vectorizer):
+# Prediction function
+def predict_text(text):
     text_cleaned = clean_text(text)
-    text_tfidf = vectorizer.transform([text_cleaned])
-    probabilities = model.predict_proba(text_tfidf)[0]  # Predicted probabilities
-    prediction = model.predict(text_tfidf)[0]  # Predicted class
+    text_tfidf = tfidf_vectorizer.transform([text_cleaned])
+    probabilities = svm_model.predict_proba(text_tfidf)
+    prediction = svm_model.predict(text_tfidf)[0]
     return {
         "Predicted Class": 'LLM-Generated' if prediction == 1 else 'Human-Written',
-        "Probability of LLM-Generated": probabilities[1],
-        "Probability of Human-Written": probabilities[0],
-    }   
-
+        "Probability of LLM-Generated": probabilities[0][1],
+        "Probability of Human-Written": probabilities[0][0]
+    }
 
 
 #######################################################################################################################################
@@ -176,17 +179,17 @@ def main():
     # TEXT Classification Tab
     with tab3:
         st.subheader("Classify Text as AI-Generated or Human-Written")
-        svm_model, tfidf_vectorizer = load_text_model_and_vectorizer("svm_model.pkl","tfidf_vectorizer.pkl")
-        user_input = st.text_area("Enter text:(Minimum word count is 500)", "")
-
+        #svm_model, tfidf_vectorizer = load_text_model_and_vectorizer("svm_model.pkl","tfidf_vectorizer.pkl")
+        user_input = st.text_area("Enter the text you want to classify:", "")
+        
         if st.button('Classify Text'):
             if user_input:
-                prediction = predict_text(user_input, svm_model, tfidf_vectorizer)
-                st.success(f"**Predicted Class:** {prediction['Predicted Class']}")
+                prediction = predict_text(user_input)
+                st.write(f"**Predicted Class:** {prediction['Predicted Class']}")
                 st.write(f"**Probability of LLM-Generated:** {prediction['Probability of LLM-Generated']:.2f}")
                 st.write(f"**Probability of Human-Written:** {prediction['Probability of Human-Written']:.2f}")
             else:
-                st.write("Please enter text to classify.")
+                st.write("Please enter some text to classify.")
 
 
     # AUDIO Classification Tab
