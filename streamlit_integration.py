@@ -37,7 +37,6 @@ def clean_text(text):
     text = re.sub(f"[{re.escape(string.punctuation)}]", "", text)  # Remove punctuation
     text = re.sub(r'\d+', '', text)  # Remove numbers
     text = re.sub(r'\s+', ' ', text).strip()  # Remove extra spaces
-    text = " ".join([lemmatizer.lemmatize(word) for word in text.split() if word not in stopwords.words('english')])
     return text
 
 # Prediction function
