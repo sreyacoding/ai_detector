@@ -179,7 +179,6 @@ def main():
     # TEXT Classification Tab
     with tab3:
         st.subheader("Classify Text as AI-Generated or Human-Written")
-        #svm_model, tfidf_vectorizer = load_text_model_and_vectorizer("svm_model.pkl","tfidf_vectorizer.pkl")
         user_input = st.text_area("Enter the text you want to classify:", "")
         
         if st.button('Classify Text'):
