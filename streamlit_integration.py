@@ -9,6 +9,8 @@ import io
 import re
 import string
 from nltk.stem import WordNetLemmatizer
+import nltk
+nltk.download('stopwords')
 from nltk.corpus import stopwords
 
 #######################################################################################################################################
