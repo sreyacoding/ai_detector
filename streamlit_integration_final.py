@@ -9,6 +9,7 @@ import io
 import re
 import string
 from nltk.stem import WordNetLemmatizer
+from nltk.corpus import stopwords
 
 #######################################################################################################################################
 ##################################
@@ -27,16 +28,13 @@ with open('tfidf_final_vectorizer.pkl', 'rb') as vectorizer_file:
 
 # Text cleaning function
 def clean_text(text):
-    import re
-    import string
-    from nltk.stem import WordNetLemmatizer
-    from nltk.corpus import stopwords
     
     lemmatizer = WordNetLemmatizer()
     text = text.lower()  # Convert to lowercase
     text = re.sub(f"[{re.escape(string.punctuation)}]", "", text)  # Remove punctuation
     text = re.sub(r'\d+', '', text)  # Remove numbers
     text = re.sub(r'\s+', ' ', text).strip()  # Remove extra spaces
+    text = " ".join([lemmatizer.lemmatize(word) for word in text.split() if word not in stopwords.words('english')])
     return text
 
 # Prediction function
@@ -178,7 +176,7 @@ def main():
     # TEXT Classification Tab
     with tab3:
         st.subheader("Classify Text as AI-Generated or Human-Written")
-        user_input = st.text_area("Enter the text you want to classify:", "")
+        user_input = st.text_area("Enter the text you want to classify:(minimum word count is 250)", "")
         
         if st.button('Classify Text'):
             if user_input:
