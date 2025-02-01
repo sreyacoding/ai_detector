@@ -209,7 +209,7 @@ def main():
 
                     predicted_class, predicted_proba = predict_audio_class("temp_audio_file.mp3", audio_model)
 
-                    if predicted_class[0]=='0':
+                    if predicted_class==0:
                         st.success(f"Predicted Class: Human Voice")
                     else:
                         st.success(f"Predicted Class: AI-Generated")                    
