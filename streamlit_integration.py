@@ -8,10 +8,13 @@ import torch
 import io
 import re
 import string
-from nltk.stem import WordNetLemmatizer
 import nltk
 nltk.download('stopwords')
 from nltk.corpus import stopwords
+nltk.download('wordnet')
+nltk.download('omw-1.4')
+from nltk.stem import WordNetLemmatizer
+
 
 #######################################################################################################################################
 ##################################
