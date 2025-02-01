@@ -222,7 +222,7 @@ def main():
         uploaded_file = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
 
         if uploaded_file:
-            st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
+            st.image(uploaded_file, caption="Uploaded Image", use_container_width=True)
             if st.button("Classify"):
                 with st.spinner("Loading model..."):
                     model = load_image_model("resnet18_cifake.pkl")
