@@ -1,85 +1,132 @@
-# ai_detector
-AI vs Human Text and Audio Detection Model 
+# 🔍 **AI Detector: AI vs Human Detection for Text, Audio, and Image** 🤖 vs 👤
 
-**Introduction**
-This project develops a model to distinguish between AI-generated and human-made text, audio, and images, addressing the growing need for content authenticity. The model is trained on diverse datasets and deployed as a Streamlit app, allowing users to input text, upload audio, or submit images for instant predictions, ensuring content integrity.
+🚀 [**🌐 Explore the live hosted website here!**](https://gen-ai-detector.streamlit.app/)
 
+---
 
-Audio Detection
+## 📑 **Table of Contents**
 
-**Objective:**
-To build a model that can distinguish between an AI-generated deepfake voice vs real human speech.
+- [🌟 Introduction](#introduction)
+- [🎧 Audio Detection](#audio-detection)
+  - [🔍 Objective](#audio-objective)
+  - [📊 Dataset](#audio-dataset)
+  - [🧠 Model Training](#audio-model-training)
+  - [⚙️ Tech Stack](#audio-tech-stack)
+  - [🏆 Conclusion](#audio-conclusion)
+- [✍️ Text Detection](#text-detection)
+  - [🔍 Objective](#text-objective)
+  - [📊 Dataset](#text-dataset)
+  - [🧠 Model Training](#text-model-training)
+  - [⚙️ Tech Stack](#text-tech-stack)
+  - [🏆 Conclusion](#text-conclusion)
+- [🖼️ Image Detection](#image-detection)
+  - [🔍 Objective](#image-objective)
+  - [📊 Dataset](#image-dataset)
+  - [🧠 Model Training](#image-model-training)
+  - [⚙️ Tech Stack](#image-tech-stack)
+  - [🏆 Conclusion](#image-conclusion)
+- [🌟 Final Thoughts](#final-thoughts)
 
-**Dataset:** 
-The model is trained using a combination of datasets like the TIMIT-TTS dataset, which contains a variety of synthetic audio files and LibriSpeech which contains a multitude of real human speakers' audio.
+---
 
-**Model Training:**
-The following models were trained and evaluated for this task:
-- XGBoost:
-  - Achieved highest precision, recall, F1 score, accuracy, ROC-AUC scorea and EER among all models.
-  - Selected as the final model due to superior performance.
-- LightGBM
-- VGG16
+## 🌟 **Introduction**
 
-**Tech Stack:**
-- Librosa & IPython: Used for feature extraction from audio files (e.g., MFCC, zero-crossing rates, chroma features).
-- Scikit-learn: Used for XGBoost.
-- Streamlit: Developed a web interface where users can upload audio files for real-time prediction.
+In the age of **AI-generated content**, ensuring **authenticity** is more important than ever. This project aims to develop a robust model that can **differentiate between human-made** and **AI-generated content** across three domains: **text**, **audio**, and **images**.
 
-**Conclusion:**
-The XGBoost model was chosen due to its superior overall performance in metrics scores. The project successfully demonstrated how ML models can detect synthetic audio, offering a valuable tool to counteract the potential misuse of AI in audio content creation.
+- 🌍 **Real-time predictions** via a user-friendly **website**.
+- 🔎 **Enhances content integrity** across multiple formats.
+- 🚀 **Deployed and accessible online** for easy testing and integration.
 
+[**🌐 Explore the live hosted website here!**](https://gen-ai-detector.streamlit.app/)
 
+---
 
-Text Detection
+## 🎧 **Audio Detection**: **AI vs Human Voice**
 
-**Objective:**
-The goal of this project is to build a classification model that distinguishes between AI-generated text and human-written content. For example, the model can help detect whether a student or an LLM (Large Language Model), like ChatGPT, wrote an essay.    
+### 🔍 **Objective**
+Create a model to detect **AI-generated deepfake voices** and differentiate them from **real human speech**, providing a tool to combat **synthetic audio manipulation**.
 
-**Dataset:** 
-We used the LLM-Detect AI Generated Text Dataset to train the model and ensure accurate classification.
+### 📊 **Dataset**
+The model was trained using the following datasets:
+- **TIMIT-TTS**: Synthetic speech samples.
+- **LibriSpeech**: Real human speaker samples.
 
-**Model Training:**
-The following models were trained and evaluated for this task:
+### 🧠 **Model Training**
+- **XGBoost** 🏆: The **top-performing model** with the highest precision, recall, F1 score, and accuracy.
+- **LightGBM**: Another model tested for comparison.
+- **VGG16**: Used to explore deep learning-based approaches.
 
-- Logistic Regression: Used to classify text based on TF-IDF features.
-- Random Forest: Utilized ensemble learning on TF-IDF features for better generalization.
-- Support Vector Machine (SVM): 
-  - Achieved the highest F1 score among all models.
-  - Selected as the final model for deployment due to superior performance.  
-- BERT (Transformer Model): Fine-tuned on the dataset using the Transformers Library, but SVM outperformed it in terms of practical deployment.
+**Selected Model**: **XGBoost** 🏆 for its **robust performance** across all evaluation metrics.
 
-**Tech Stack:**
-- Scikit-learn: Used for training and evaluating the models.  
-- Transformers Library: For experimentation with pre-trained models like BERT.  
-- Streamlit: Built an interactive web app to allow users to input text and get predictions in real-time.
+### ⚙️ **Tech Stack** ⚡🧑‍💻
+- **Librosa & IPython** 🎶: **Audio feature extraction** (MFCC, zero-crossing rates).
+- **Scikit-learn** 🔧: Used for training **XGBoost** and **LightGBM**.
+- **Streamlit** 🌐: Interactive website allowing real-time predictions.
 
+### 🏆 **Conclusion**
+The **XGBoost model** was selected for its **outstanding performance** in identifying **synthetic audio**, making it an essential tool for combating **deepfake audio**.
 
+---
 
-Image Detection
+## ✍️ **Text Detection**: **AI vs Human-Written Text**
 
-**Objective:**  
-This project develops a model to differentiate between AI-generated and real images, ensuring content authenticity in the digital age.
+### 🔍 **Objective**
+Develop a model capable of **classifying AI-generated text** and **human-written content**, specifically for detecting texts written by **Large Language Models (LLMs)** like **ChatGPT**.
 
-**Dataset:**  
-The model is trained on the CIFake dataset, which includes both real and AI-generated images, enabling accurate classification of authentic versus synthetic images.
+### 📊 **Dataset**
+The **LLM-Detect AI Generated Text Dataset** was used to train the model for **accurate classification** between **AI** and **human text**.
 
-**Model Training:**  
-The following components were utilized for training:
-- ResNet-18:
-  - A pre-trained CNN, leveraging weights from ImageNet for transfer learning.
-- Adam Optimizer:
-  - Paired with the cross-entropy loss function for effective multi-class classification training.
+### 🧠 **Model Training**
+Models trained and evaluated include:
+- **Logistic Regression**: Basic approach using **TF-IDF** features.
+- **Random Forest**: Ensemble learning for **better generalization**.
+- **Support Vector Machine (SVM)** 🏆: Achieved the **highest F1 score**, selected as the final model for deployment.
+- **BERT**: Experimented with **transformers**, but **SVM** outperformed it for practical deployment.
 
-**Tech Stack:**  
-- Scikit-learn:
-  - Used for model training, evaluation, and performance tracking.  
-- Streamlit:
-  - Developed an interactive web app that allows users to upload images and receive real-time predictions.
+**Selected Model**: **SVM** 🏆, chosen for its **high F1 score** and **deployment efficiency**.
 
-**Conclusion:**  
-The Image Classifier, powered by ResNet-18 and fine-tuned on the CIFake dataset, effectively distinguishes between real and AI-generated images. It integrates into a larger AI system designed to ensure content authenticity, providing real-time predictions through a user-friendly web app.
+### ⚙️ **Tech Stack** ⚡🖥️
+- **Scikit-learn** 🔧: For **model training** and evaluation.
+- **Transformers Library** 💻: Used for experimenting with **BERT** and other transformer models.
+- **Streamlit** 🌐: Created an **interactive web interface** to get **real-time predictions** on input text.
 
+### 🏆 **Conclusion**
+**SVM** was selected for **optimal performance** in **AI text detection**, ensuring reliable classification of **AI-generated text**.
 
-**Conclusion:**
-The SVM model was chosen for deployment because it provided the best F1 score and overall performance. This project showcases how ML models can effectively identify text generated by AI systems, ensuring academic and professional integrity.
+---
+
+## 🖼️ **Image Detection**: **AI vs Real Images**
+
+### 🔍 **Objective**
+Create a model that can differentiate between **AI-generated images** and **real photographs**, ensuring the **authenticity of visual content**.
+
+### 📊 **Dataset**
+The model was trained on the **CIFake dataset**, which contains a combination of **real and AI-generated images**.
+
+### 🧠 **Model Training**
+- **ResNet-18** 🏆: A **pre-trained CNN** model utilizing **ImageNet weights** for **transfer learning**.
+- **Adam Optimizer**: Used with **cross-entropy loss** to optimize the model’s performance.
+
+**Selected Model**: **ResNet-18** 🏆, fine-tuned for **image authenticity detection**.
+
+### ⚙️ **Tech Stack** ⚡📸
+- **Scikit-learn** 🔧: For **model training** and **evaluation**.
+- **Streamlit** 🌐: Developed a **website** for users to upload images and get **real-time predictions**.
+
+### 🏆 **Conclusion**
+The **ResNet-18 model**, fine-tuned on the **CIFake dataset**, is highly effective at distinguishing between **real and AI-generated images**, ensuring **image authenticity** in the digital age.
+
+---
+
+## 🌟 **Final Thoughts**
+
+This project demonstrates the power of **machine learning** in detecting **AI-generated content** and safeguarding **digital integrity** across text, audio, and image formats.
+
+- **Real-time predictions** via a **website** make this technology accessible and user-friendly.
+- The system is designed to **easily integrate** with other tools to combat the growing challenges of **synthetic media**.
+- **Versatile** across multiple content types, ensuring broad applications in **education**, **media**, **journalism**, and **forensics**.
+
+---
+
+🚀 **Explore the AI-powered detection system and help ensure content authenticity!**  
+[**🌐 View the live hosted website here!**](https://gen-ai-detector.streamlit.app/)
