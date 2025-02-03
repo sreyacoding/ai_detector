@@ -54,7 +54,6 @@ The model was trained using the following datasets:
 ### Model Training  
 - **XGBoost** 🏆: The **top-performing model** with the highest precision, recall, F1 score, and accuracy.  
 - **LightGBM**: Another model tested for comparison.  
-- **VGG16**: Used to explore deep learning-based approaches.  
 
 **Selected Model**: **XGBoost** 🏆 for its **robust performance** across all evaluation metrics.  
 
@@ -110,7 +109,7 @@ The model was trained on the **CIFake dataset**, which contains a combination of
 **Selected Model**: **ResNet-18** 🏆, fine-tuned for **image authenticity detection**.  
 
 ### Tech Stack  
-- **Scikit-learn** 🔧: For **model training** and **evaluation**.  
+- **PyTorch** 🔥: Used for deep learning model training and evaluation. 
 - **Streamlit** 🌐: Developed a **website** for users to upload images and get **real-time predictions**.  
 
 ### Conclusion  
